@@ -1,0 +1,6 @@
+intro_guide.admin_settings:
+  title: 'Intro Guide settings'
+  description: 'This is the settings page to configure the Intro Guide Module'
+  parent: system.admin_config
+  route_name: intro_guide.settings
+  weight: 10

@@ -1,0 +1,20 @@
+introguide.intro_guide:
+  version: 1.x
+  css:
+    theme:
+      /libraries/introjs/introjs.css: {}
+  #    /libraries/introjs/minified/introjs.min.css: {}
+  #    /libraries/introjs/example/assets/css/demo.css: {}
+  #    /libraries/introjs/example/assets/css/bootstrap.min.css: {}
+  js:
+    js/intro_guide.js: {}
+    /libraries/introjs/intro.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.dialog
+
+introguide.introjs:
+  js:
+    /libraries/introjs/intro.js: {}
+  dependencies:
+    - core/jquery

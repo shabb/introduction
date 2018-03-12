@@ -1,0 +1,5 @@
+name: 'Intro Guide'
+description: 'Provides an Introduction Guide to navigate through the site using intro.js'
+package: 'Introduction Guide'
+type: 'module'
+core: 8.x

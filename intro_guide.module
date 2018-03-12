@@ -1,0 +1,43 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function intro_guide_page_attachments(array &$attachments) {
+  $config = \Drupal::config('intro_guide.settings');
+  $path = $config->get('intro_node_url');
+  // $paths = explode(', ', $path);.
+  $paths = array('/node/1', '/node/2');
+  $current_path = \Drupal::service('path.current')->getPath();
+  $intro_load = $config->get('intro_load');
+  $trigger = $config->get('trigger_element');
+  $num_events = $config->get('events');
+  $intro_title = $config->get('intro_title');
+  $intro_message = $config->get('intro_message');
+  for ($i = 0; $i < $num_events; $i++) {
+    $num_steps = $config->get('steps_' . $i);
+    $event_steps[$i] = $config->get('steps_' . $i);
+    $event[$i] = $config->get('events_' . $i);
+    for ($j = 0; $j < $num_steps; $j++) {
+      $steps[$i][] = $config->get('events_' . $i . '_steps_' . $j);
+      $description[] = $config->get('intro_description_' . $i);
+    }
+  }
+  $intro_js = array(
+    'intro_load' => $intro_load,
+    'intro_trigger' => $trigger,
+    'intro_steps' => $steps,
+    'intro_events' => $event,
+    'intro_title' => $intro_title,
+    'intro_message' => $intro_message,
+  );
+
+  if (in_array($current_path, $paths)) {
+    $attachments['#attached']['library'] = array('intro_guide/introguide.intro_guide', 'intro_guide/introguide.introjs');
+    $attachments['#attached']['drupalSettings']['intro_js'] = $intro_js;
+  }
+  return $attachments;
+}

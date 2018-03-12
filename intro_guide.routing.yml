@@ -1,0 +1,22 @@
+intro_guide.settings:
+  path: 'admin/config/intro-guide'
+  defaults:
+    _form: '\Drupal\intro_guide\Form\IntroSettingsForm'
+    _title: 'Intro Guide'
+  requirements:
+    _permission: 'access content'
+
+intro_guide.autocomplete:
+  path: '/admin/autocomplete'
+  defaults:
+    _controller: '\Drupal\intro_guide\Controller\IntroGuideController::autocomplete'
+  requirements:
+    _permission: 'access content'
+
+intro_guide.collection:
+  path: '/admin/config/intro-guide/intro-guide-settings'
+  defaults:
+    _entity_list: 'node'
+    _title: 'Intro Settings Form'
+  requirements:
+    _permission: 'access content'
